@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ project.title }}</title>
+</head>
+<body>
+    <h1>{{ project.title }}</h1>
+    <p>{{ project.description }}</p>
+    {% if project.image %}
+        <img src="{{ project.image.url }}" alt="{{ project.title }}">
+    {% endif %}
+    {% if project.link %}
+        <p><a href="{{ project.link }}">Project Link</a></p>
+    {% endif %}
+</body>
+</html>

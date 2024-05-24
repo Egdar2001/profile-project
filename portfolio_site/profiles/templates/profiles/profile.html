@@ -1,0 +1,44 @@
+
+{% extends 'profiles/base.html' %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<h1>{{ user_profile.user.username }}'s Profile</h1>
+<p>{{ user_profile.bio }}</p>
+<p>Skills: {{ user_profile.skills }}</p>
+<p>Contact: {{ user_profile.contact_details }}</p>
+<a href="{% url 'edit_profile' %}" class="btn btn-primary">Edit Profile</a>
+
+<h2>Projects</h2>
+<a href="{% url 'add_project' %}" class="btn btn-primary">Add Project</a>
+<ul class="list-group mt-3">
+    {% for project in projects %}
+        <li class="list-group-item">
+            <a href="{% url 'project_detail' project.id %}">{{ project.title }}</a>
+        </li>
+    {% endfor %}
+</ul>
+
+<h2>Education</h2>
+<a href="{% url 'add_education' %}" class="btn btn-primary">Add Education</a>
+<ul class="list-group mt-3">
+    {% for edu in education %}
+        <li class="list-group-item">{{ edu.degree }} from {{ edu.institution }}</li>
+    {% endfor %}
+</ul>
+
+<h2>Work Experience</h2>
+<a href="{% url 'add_work_experience' %}" class="btn btn-primary">Add Work Experience</a>
+<ul class="list-group mt-3">
+    {% for work in work_experience %}
+        <li class="list-group-item">{{ work.position }} at {{ work.company }}</li>
+    {% endfor %}
+</ul>
+
+<h2>Certifications</h2>
+<a href="{% url 'add_certification' %}" class="btn btn-primary">Add Certification</a>
+<ul class="list-group mt-3">
+    {% for cert in certifications %}
+        <li class="list-group-item">{{ cert.name }} from {{ cert.institution }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
